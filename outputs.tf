@@ -74,11 +74,3 @@ output "cluster_ca_certificate" {
   EOF
   value       = yandex_kubernetes_cluster.kube_cluster.master[0].cluster_ca_certificate
 }
-
-# test
-output "test" {
-  description = <<EOF
-    Kubernetes cluster external IP address.
-  EOF
-  value       = yandex_kubernetes_cluster.kube_cluster.master[0]
-}
