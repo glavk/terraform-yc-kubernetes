@@ -38,7 +38,7 @@ output "external_v4_address" {
   description = <<EOF
     Kubernetes cluster external IP address.
   EOF
-  value       = var.public_access == true ? yandex_kubernetes_cluster.kube_cluster.master[0].external_v4_address : null
+  value       = var.public_access == true ? yandex_kubernetes_cluster.kube_cluster.master.external_v4_address : null
 }
 
 # private cluster ip 
@@ -47,7 +47,7 @@ output "internal_v4_address" {
     Kubernetes cluster internal IP address.
     Note: Kubernetes internal cluster nodes are available from the virtual machines in the same VPC as cluster nodes.
   EOF
-  value       = yandex_kubernetes_cluster.kube_cluster.master[0].internal_v4_address
+  value       = yandex_kubernetes_cluster.kube_cluster.master.internal_v4_address
 }
 
 # public cluster url
@@ -55,7 +55,7 @@ output "external_v4_endpoint" {
   description = <<EOF
     Kubernetes cluster external URL.
   EOF
-  value       = var.public_access == true ? yandex_kubernetes_cluster.kube_cluster.master[0].external_v4_endpoint : null
+  value       = var.public_access == true ? yandex_kubernetes_cluster.kube_cluster.master.external_v4_endpoint : null
 }
 
 # private cluster url
@@ -64,7 +64,7 @@ output "internal_v4_endpoint" {
     Kubernetes cluster internal URL.
     Note: Kubernetes internal cluster nodes are available from the virtual machines in the same VPC as cluster nodes.
   EOF
-  value       = yandex_kubernetes_cluster.kube_cluster.master[0].internal_v4_endpoint
+  value       = yandex_kubernetes_cluster.kube_cluster.master.internal_v4_endpoint
 }
 
 # cluster CA certificate
@@ -72,5 +72,5 @@ output "cluster_ca_certificate" {
   description = <<EOF
     Kubernetes cluster certificate.
   EOF
-  value       = yandex_kubernetes_cluster.kube_cluster.master[0].cluster_ca_certificate
+  value       = yandex_kubernetes_cluster.kube_cluster.master.cluster_ca_certificate
 }
