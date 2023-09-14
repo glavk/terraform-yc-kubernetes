@@ -50,6 +50,13 @@ resource "yandex_resourcemanager_folder_iam_member" "sa_public_loadbalancers_rol
   member    = "serviceAccount:${yandex_iam_service_account.master.id}"
 }
 
+resource "yandex_resourcemanager_folder_iam_member" "sa_public_alb_role" {
+  count     = var.allow_public_load_balancers ? 1 : 0
+  folder_id = local.folder_id
+  role      = "alb.admin"
+  member    = "serviceAccount:${yandex_iam_service_account.master.id}"
+}
+
 resource "yandex_resourcemanager_folder_iam_member" "sa_certificates_downloader_role" {
   count     = var.allow_public_load_balancers ? 1 : 0
   folder_id = local.folder_id
